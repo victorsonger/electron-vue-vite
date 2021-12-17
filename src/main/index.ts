@@ -18,7 +18,7 @@ function bootstrap() {
   })
 
   if (app.isPackaged) {
-    win.loadFile(path.join(__dirname, '../render/index.html'))
+    win.loadFile(path.join(__dirname, '../renderer/index.html'))
   } else {
     win.maximize()
     win.webContents.openDevTools()

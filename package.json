@@ -5,49 +5,15 @@
   "author": "草鞋没号 <308487730@qq.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "concurrently -n=R,P,M -c=green,yellow,blue \"npm run dev:render\" \"npm run dev:preload\" \"npm run dev:main\"",
-    "dev:render": "vite",
+    "dev": "concurrently -n=R,P,M -c=green,yellow,blue \"npm run dev:renderer\" \"npm run dev:preload\" \"npm run dev:main\"",
+    "dev:renderer": "vite",
     "dev:preload": "node -r ts-node/register scripts/build-preload --env=development --watch",
     "dev:main": "node -r ts-node/register scripts/build-main --env=development --watch",
     "//": "---------------------------------------------------------------------------------------------------",
-    "build:render": "vite build",
+    "build:renderer": "vite build",
     "build:preload": "node -r ts-node/register scripts/build-preload --env=production",
     "build:main": "node -r ts-node/register scripts/build-main --env=production",
-    "build": "rimraf dist && npm run build:render && npm run build:preload && npm run build:main && electron-builder"
-  },
-  "build": {
-    "appId": "308487730@qq.com",
-    "asar": true,
-    "directories": {
-      "output": "release/${version}"
-    },
-    "files": [
-      "!node_modules",
-      "dist/**"
-    ],
-    "mac": {
-      "artifactName": "${productName}_${version}.${ext}",
-      "target": [
-        "dmg"
-      ]
-    },
-    "win": {
-      "target": [
-        {
-          "target": "nsis",
-          "arch": [
-            "x64"
-          ]
-        }
-      ],
-      "artifactName": "${productName}_${version}.${ext}"
-    },
-    "nsis": {
-      "oneClick": false,
-      "perMachine": false,
-      "allowToChangeInstallationDirectory": true,
-      "deleteAppDataOnUninstall": false
-    }
+    "build": "rimraf dist && npm run build:renderer && npm run build:preload && npm run build:main && electron-builder"
   },
   "dependencies": {
     "vue": "^3.2.11"

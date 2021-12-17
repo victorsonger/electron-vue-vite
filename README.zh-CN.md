@@ -27,7 +27,7 @@
 
 ## 工作原理
 
-#### `main`、`preload`、`render`
+#### `main`、`preload`、`renderer`
 
 * **这个三个 Electron 中的重要概念会贯穿整个模板的脚本与源码的设计**
 
@@ -43,7 +43,7 @@
 
 #### `package.json[scripts]` 中提供了三个对应的 开发(dev) 与 构建(build) 命令
 
-* `dev:render` 对应 `vite serve` 提供开发期的 `renderer-process` 热更新 (vite 提供的 HMR 功能)
+* `dev:renderer` 对应 `vite serve` 提供开发期的 `renderer-process` 热更新 (vite 提供的 HMR 功能)
 
 * `dev:preload` 对应 `scripts/build-preload.ts --watch` 提供开发期的 `preload-script` 重载 (通过 WebSocket 通知页面刷新即可重新加载 preload-script)
 
@@ -55,7 +55,7 @@
 
 * ----
 
-* `build:render` 对应 `vite build` 构建 `renderer-process` 代码 (vite)
+* `build:renderer` 对应 `vite build` 构建 `renderer-process` 代码 (vite)
 
 * `build:preload` 对应 `vite build` 构建 `scripts/build-preload.ts` 代码 (rollup)
 
@@ -73,11 +73,11 @@
   ├── dist
   |   ├── main
   |   ├── preload
-  |   ├── render
+  |   ├── renderer
   ├── src
   |   ├── main
   |   ├── preload
-  |   ├── render
+  |   ├── renderer
   |
   ```
 
@@ -108,7 +108,7 @@
     }
     ```
 
-  * **src/render/main.ts**
+  * **src/renderer/main.ts**
 
     ```typescript
     console.log('fs', window.fs)

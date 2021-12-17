@@ -10,11 +10,11 @@ import { builtins } from './utils'
 
 export interface ConfigOptions {
   env?: typeof process.env.NODE_ENV
-  proc: 'main' | 'render' | 'preload'
+  proc: 'main' | 'renderer' | 'preload'
 }
 
 export default function (opts: ConfigOptions) {
-  const sourcemap = opts.proc === 'render'
+  const sourcemap = opts.proc === 'renderer'
   const options: RollupOptions = {
     input: path.join(__dirname, `../src/${opts.proc}/index.ts`),
     output: {
@@ -49,8 +49,8 @@ export default function (opts: ConfigOptions) {
       }),
     ],
     external: [
-      ...builtins(),
       'electron',
+      ...builtins(),
     ],
     onwarn: warning => {
       // https://github.com/rollup/rollup/issues/1089#issuecomment-365395213

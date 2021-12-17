@@ -9,19 +9,19 @@ export default defineConfig(env => {
     plugins: [
       vue(),
     ],
-    root: join(__dirname, 'src/render'),
+    root: join(__dirname, 'src/renderer'),
     base: './',
     server: {
       port: pkg.env.PORT,
     },
     resolve: {
       alias: {
-        '@root': __dirname,
-        '@': join(__dirname, 'src'),
+        '@': join(__dirname, 'src/renderer'),
+        'src': join(__dirname, 'src'),
       },
     },
     build: {
-      outDir: join(__dirname, 'dist/render'),
+      outDir: join(__dirname, 'dist/renderer'),
       emptyOutDir: true,
       minify: false,
       commonjsOptions: {},

@@ -60,7 +60,7 @@
     }
     ```
 
-  * **src/render/main.ts**
+  * **src/renderer/main.ts**
 
     ```typescript
     console.log('fs', window.fs)
