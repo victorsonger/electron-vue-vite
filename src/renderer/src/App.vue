@@ -1,22 +1,13 @@
 <script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
-import HelloWorld from './components/HelloWorld.vue'
+
 </script>
 
 <template>
-  <div class="logo-box">
-    <img style="height:140px;" src="./assets/electron.png" alt="Electron logo">
-    <span/>
-    <img style="height:140px;" alt="Vite logo" src="./assets/vite.svg" />
-    <span/>
-    <img style="height:140px;" alt="Vue logo" src="./assets/vue.png" />
+  <div class="nav-bar">
+    <router-link to="/home">Home</router-link>
+    <router-link to="/about">About</router-link>
   </div>
-  <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
-  <div class="static-public">
-    Place static files into the <code>src/renderer/public</code> folder
-    <img style="width:90px;" :src="'./images/node.png'" />
-  </div>
+  <router-view />
 </template>
 
 <style>
@@ -29,27 +20,12 @@ import HelloWorld from './components/HelloWorld.vue'
   margin-top: 60px;
 }
 
-.logo-box {
-  display: flex;
-  width: 100%;
-  justify-content: center;
+.nav-bar a {
+  padding: 4px 7px;
 }
 
-.logo-box span {
-  width: 74px;
+.router-link-exact-active {
+  color: #fa6479;
 }
 
-.static-public {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.static-public code {
-  background-color: #eee;
-  padding: 2px 4px;
-  margin: 0 4px;
-  border-radius: 4px;
-  color: #304455;
-}
 </style>
