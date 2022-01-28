@@ -10,8 +10,31 @@
     "sourceMap": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "lib": ["esnext", "dom"]
+    "lib": [
+      "esnext",
+      "dom"
+    ],
+    "types": [
+      // https://github.com/vuejs/core/issues/1033#issuecomment-993169375
+      "vite/client", // if using vite
+      // ...
+    ]
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue"
+  ],
+  "exclude": [
+    "**/node_modules",
+    "**/dist",
+    // https://github.com/johnsoncodehk/volar/discussions/592
+    "**/*.stories.ts" // Exclude storybook stories
+  ],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
 }

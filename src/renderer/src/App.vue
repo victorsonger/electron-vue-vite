@@ -5,6 +5,7 @@ import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
+<!-- https://github.com/vuejs/core/issues/1033#issuecomment-937643074 -->
   <div class="logo-box">
     <img style="height:140px;" src="./assets/electron.png" alt="Electron logo">
     <span/>
@@ -33,6 +34,10 @@ import HelloWorld from './components/HelloWorld.vue'
   display: flex;
   width: 100%;
   justify-content: center;
+  color: aqua;
+}
+#logo-box {
+    background: #ff0000;
 }
 
 .logo-box span {
