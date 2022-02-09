@@ -2,9 +2,11 @@
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
 import HelloWorld from './components/HelloWorld.vue'
+import ThemeControl from './components/ThemeControl.vue';
 </script>
 
 <template>
+  <ThemeControl></ThemeControl>
 <!-- https://github.com/vuejs/core/issues/1033#issuecomment-937643074 -->
   <div class="logo-box">
     <img style="height:140px;" src="./assets/electron.png" alt="Electron logo">
@@ -21,6 +23,19 @@ import HelloWorld from './components/HelloWorld.vue'
 </template>
 
 <style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    background: #d1d1d1;
+    color: #fff;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+    background: #fff;
+    color: #333;
+  }
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

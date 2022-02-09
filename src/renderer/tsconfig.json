@@ -1,6 +1,7 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
     "target": "esnext",
     "useDefineForClassFields": true,
     "module": "esnext",
@@ -18,7 +19,13 @@
       // https://github.com/vuejs/core/issues/1033#issuecomment-993169375
       "vite/client", // if using vite
       // ...
-    ]
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@*": [
+        "./*"
+      ],
+    },
   },
   "include": [
     "src/**/*.ts",

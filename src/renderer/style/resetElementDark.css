@@ -1,0 +1,6 @@
+@media (prefers-color-scheme: dark) {
+  .el-button {
+    --el-button-bg-color-dark: #333333;
+    background-color: var(--el-button-bg-color-dark);
+  }
+}
