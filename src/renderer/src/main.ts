@@ -4,7 +4,8 @@ import { createApp } from "vue";
 // 而是要在用到对应组件的地方去引入对应的css
 // 不过为了方便这里就全量引入了
 import "element-plus/dist/index.css";
-import "../style/resetElementDark.css";
+
+import "../style/base.less";
 
 import App from "./App.vue";
 

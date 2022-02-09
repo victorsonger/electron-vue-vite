@@ -1,0 +1,160 @@
+@charset "utf-8";
+
+/* 高宽设定 */
+/* 头部高度设定 */
+@headerHeight: 90px;
+@headerTitle: 36px;
+
+/* 字体大小设定 */
+@fontContent: 26px;
+/* 基本颜色设定 */
+/* 全局 */
+@lightBackground: #fff;     // 浅色背景     (全白)
+@darkBackground: #f6f6f6;   // 深色背景     (对应灰度值#f0f0f0~#f8f8f8)
+
+@lightBorder: #e5e5e5;      // 浅色线条     (对应灰度值#e0e0e0~#f0f0f0)
+@darkBorder: #dbdbdb;       // 深色线条     (对应灰度值#c0c0c0~#e0e0e0)
+
+@grayButton: #bdc3c7;       // 置灰按钮     (对应灰度值#b0b0b0~#c0c0c0)
+
+@lightText: #808080;        // 浅灰色文字   (对应灰度值#808080~#afafaf)
+@grayText: #606060;         // 深灰色文字   (对应灰度值#505050~#7f7f7f)
+@darkText: #404040;         // 深色文字     (对应灰度值#202020~#4f4f4f)
+@black: #000;               // 黑色        (对应灰度值#000000~#1f1f1f)
+/* 主题色 */
+@themeDarkButton: #222773;      // 深蓝色按钮或其它背景色
+@themeDarkButtonActive: #4e528f;// 深蓝色按钮被激活背景色
+@themeLightButton: #02a9f4;     // 浅蓝色按钮或其它背景色
+@themeRedButton: #fe6057;       // 红色按钮背景色
+@themeDarkBorder: #222773;      // 深蓝色线条
+@themeLightBorder: #cdeefc;     // 浅蓝色线条
+@themeDarkText: #03adfe;        // 深蓝色文字
+@themeLightText: #a7e1fa;       // 浅蓝色文字
+@themeDarkGrayText:#404040;     // 深灰色文字
+@themeDisableText:#CCCCCC;      // 禁用文字
+
+ /* 元素设定 */
+ .ico {
+     background-size: 100%;
+ }
+
+ .border-top(@color: @darkBorder) {
+     border-top: 1PX solid @color;
+ }
+
+ .border-bottom(@color: @darkBorder) {
+     border-bottom: 1PX solid @color;
+ }
+
+ .border-radius(@radius: 10px) {
+     border-radius: @radius;
+     -moz-border-radius: @radius;
+     -webkit-border-radius: @radius;
+ }
+ .size(@width; @height) {
+     width: @width;
+     height: @height;
+ }
+ .animation(@animation) {
+     -webkit-animation: @animation;
+     -o-animation: @animation;
+     animation: @animation;
+ }
+ .box-sizing(@boxmodel: border-box) {
+     -webkit-box-sizing: @boxmodel;
+     -moz-box-sizing: @boxmodel;
+     box-sizing: @boxmodel;
+ }
+ .rotate(@degrees) {
+     -webkit-transform: rotate(@degrees);
+     -o-transform: rotate(@degrees);
+     transform: rotate(@degrees);
+ }
+ .transform(@transform) {
+     -webkit-transform: @transform;
+     -moz-transform: @transform;
+     transform: @transform;
+ }
+ .display-box(@orient) {
+     display: flex;
+     flex-direction: column;
+ }
+ .box-flex(@copies) {
+     flex: 1 1 0;
+ }
+ .flex-box {
+     display: flex;
+ }
+ .flex-item {
+     flex: 1 1 0;
+ }
+ .gradient-h(@start; @end) {
+     background: @start;
+     background: -moz-linear-gradient(left, @start 0%, @end 100%);
+     background: -webkit-linear-gradient(left, @start 0%,@end 100%);
+     background: linear-gradient(to right, @start 0%,@end 100%);
+ }
+ .gradient-v(@start; @end) {
+     background: @start;
+     background: -moz-linear-gradient(top, @start 0%, @end 100%);
+     background: -webkit-linear-gradient(top, @start 0%,@end 100%);
+     background: linear-gradient(to bottom, @start 0%,@end 100%);
+ }
+ // 空心箭头标记
+ .saleBase(@size: 8px; @border: 1PX; @color: #666; @top: none; @right: solid; @bottom: solid; @left: none;) {
+     content: '\20';
+     position: absolute;
+     width: @size;
+     height: @size;
+     .transform(rotate(-45deg));
+     border-width: @border;
+     border-color: @color;
+     border-top-style: @top;
+     border-right-style: @right;
+     border-bottom-style: @bottom;
+     border-left-style: @left;
+     top: 50%;
+     margin-top: -@size / 2;
+ }
+ // 向右
+ .rightSale(@size: 16px; @border: 2px; @color: #666) {
+     .saleBase(@size, @border, @color, none, solid, solid, none);
+ }
+ // 向左
+ .leftSale(@size: 16px; @border: 2px; @color: #666) {
+     .saleBase(@size, @border, @color, solid, none, none, solid);
+ }
+ // 向下
+ .downSale(@size: 16px; @border: 2px; @color: #666) {
+     .saleBase(@size, @border, @color, none, none, solid, solid);
+ }
+ // 向上
+ .upSale(@size: 16px; @border: 2px; @color: #666) {
+     .saleBase(@size, @border, @color, solid, solid, none, none);
+ }
+ // 三角标记
+ .angle(@size) {
+     position: absolute;
+     content: '\20';
+     width: 0;
+     height: 0;
+     border-style: solid;
+     border-color: transparent;
+     border-width: @size;
+ }
+ // 向下三角形
+ .downAngle(@size: 5px, @color: #333) {
+     .angle(@size);
+     border-top-color: @color;
+     border-top-width: @size * 1.5;
+     top: 50%;
+     margin-top: -4px;
+ }
+ // 向上三角形
+ .upAngle(@size: 5px, @color: #333) {
+     .angle(@size);
+     border-bottom-color: @color;
+     border-bottom-width: @size * 1.5;
+     top: 50%;
+     margin-top: -8px;
+ }
