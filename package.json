@@ -37,6 +37,7 @@
     "rollup"
   ],
   "dependencies": {
+    "@vueuse/core": "^7.6.0",
     "element-plus": "^2.0.1"
   }
 }

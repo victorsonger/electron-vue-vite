@@ -1,18 +1,25 @@
 <script setup lang="ts">
 
-import {ref} from 'vue';
+import {ref, watchEffect} from 'vue';
 import {toggleThemeMode, resetToSystemTheme} from '@/utils';
+import { usePreferredDark } from '@vueuse/core'
+
 import { ElButton } from 'element-plus'
 
-const isDark = ref(false);
+const isDark = usePreferredDark();
 const isSystem = ref(false);
+
+
+watchEffect(() => {
+  console.log('isDark---', isDark.value);
+})
 
 /**
  * 切换主题  返回一个布尔值代表切换后的主题色  true：深色  false： 浅色
  */
 const toggleTheme = async () => {
   isSystem.value = false;
-  isDark.value = await toggleThemeMode();
+  await toggleThemeMode();
 }
 
 /**
