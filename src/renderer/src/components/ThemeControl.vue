@@ -33,14 +33,23 @@ const resetSystem = async () => {
 </script>
 
 <template>
-  <ElButton @click="toggleTheme" type="primary"> 切换主题</ElButton>
+<div id="theme-control">
+  <ElButton @click="toggleTheme" type="primary"> 切换{{isDark ? '浅色' : '深色'}}主题</ElButton>
   <ElButton @click="resetSystem" type="primary">重置为系统主题</ElButton>
-  <p v-if="isSystem">当前正在使用系统主题</p>
-  <p v-else>当前主题为： {{isDark ? '深色' : '浅色'}}</p>
-  
+</div>
 </template>
 
 
 
-<style lang="sass" scoped>
+<style lang="less" scoped>
+  #theme-control {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding: 30px;
+    .el-button {
+      margin-bottom: 15px;
+      margin-left: 0;
+    }
+  }
 </style>

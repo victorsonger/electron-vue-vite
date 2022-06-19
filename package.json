@@ -38,7 +38,9 @@
     "rollup"
   ],
   "dependencies": {
+    "@types/web-bluetooth": "0.0.12",
     "@vueuse/core": "^7.6.0",
-    "element-plus": "^2.0.1"
+    "element-plus": "^2.0.1",
+    "vue-router": "^4.0.14"
   }
 }

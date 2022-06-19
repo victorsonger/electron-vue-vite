@@ -1,25 +1,33 @@
 <script setup lang="ts">
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
-import HelloWorld from './components/HelloWorld.vue'
-import ThemeControl from './components/ThemeControl.vue';
+import HelloWorld from '../components/HelloWorld.vue'
+import ThemeControl from '../components/ThemeControl.vue';
+import TestBlueTooth from '../components/TestBlueTooth.vue';
+import {RouterView, RouterLink} from 'vue-router';
+
+import RouteNav from '../components/RouteNav.vue'
+
 </script>
 
 <template>
-  <ThemeControl></ThemeControl>
-<!-- https://github.com/vuejs/core/issues/1033#issuecomment-937643074 -->
-  <div class="logo-box">
-    <img style="height:140px;" src="./assets/electron.png" alt="Electron logo">
-    <span/>
-    <img style="height:140px;" alt="Vite logo" src="./assets/vite.svg" />
-    <span/>
-    <img style="height:140px;" alt="Vue logo" src="./assets/vue.png" />
+  <div id="page">
+    <div id="menu">
+      <ThemeControl></ThemeControl>
+      <RouteNav title="Home" path="/" />
+      <RouteNav title="computedAndWatch" path="/computedAndWatch" />
+    </div>
+    <div id="page-main">
+      <router-view></router-view>
+    </div>
   </div>
-  <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
+<!-- https://github.com/vuejs/core/issues/1033#issuecomment-937643074 -->
+  <!-- <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
   <div class="static-public">
     Place static files into the <code>src/renderer/public</code> folder
     <img style="width:90px;" :src="'./images/node.png'" />
-  </div>
+  </div> -->
+    <!-- <TestBlueTooth></TestBlueTooth> -->
 </template>
 
 <style>
@@ -42,7 +50,19 @@ import ThemeControl from './components/ThemeControl.vue';
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+
+#page {
+  display: flex;
+
+}
+#menu {
+  width: 30%;
+  border-right: solid gray 2px;
+}
+
+#page-main {
+  padding: 20px;
 }
 
 .logo-box {

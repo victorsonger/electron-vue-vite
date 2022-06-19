@@ -41,6 +41,17 @@ export default defineConfig({
   build: {
     emptyOutDir: true,
     outDir: "../../dist/renderer",
+    rollupOptions: {
+      // https://rollupjs.org/guide/en/#outputmanualchunks
+      output: {
+        manualChunks: {
+          "group-view": [
+            "./render/src/views/ComputedAndWatch.vue",
+            "./render/src/views/Home.vue",
+          ],
+        },
+      },
+    },
   },
   server: {
     host: pkg.env.HOST,

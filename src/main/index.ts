@@ -1,7 +1,17 @@
 import os from "os";
 import path from "path";
-import { app, BrowserWindow } from "electron";
+import { app, BrowserWindow, Input } from "electron";
 import themeHandle from "./themeHandle";
+import {
+  selectBluetoothDiviceHandle,
+  enableWebBluetooth,
+} from "./testBlueTooth";
+import {
+  setApplicationMenu,
+  gloablShortcutsRegistr,
+  beforeInputEvent,
+} from "./testKeyboardShortcuts";
+import { setDockMenu } from "./testDockMenu";
 
 // https://stackoverflow.com/questions/42524606/how-to-get-windows-version-using-node-js
 const isWin7 = os.release().startsWith("6.1");
@@ -21,6 +31,16 @@ async function createWindow() {
     },
   });
 
+  // 测试蓝牙功能
+  enableWebBluetooth();
+
+  // 测试快捷键
+  setApplicationMenu();
+  // 测试全局快捷键
+  gloablShortcutsRegistr();
+
+  win.webContents.on("select-bluetooth-device", selectBluetoothDiviceHandle);
+
   if (app.isPackaged) {
     win.loadFile(path.join(__dirname, "../renderer/index.html"));
   } else {
@@ -32,9 +52,13 @@ async function createWindow() {
     themeHandle();
     win.webContents.openDevTools();
   }
+
+  console.log("注册拦截");
+  // 拦截主进程中的输入事件
+  win.webContents.on("before-input-event", beforeInputEvent);
 }
 
-app.whenReady().then(createWindow);
+app.whenReady().then(setDockMenu).then(createWindow);
 
 // 在Windows和Linux上，关闭所有窗口通常会完全退出一个应用程序。
 app.on("window-all-closed", () => {
